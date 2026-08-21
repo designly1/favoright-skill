@@ -2,6 +2,8 @@
 
 Use Favoright’s remote MCP to explore a user’s favorite music, generate deterministic Apple Music playlist candidates, and safely create or edit playlist drafts through OAuth or personal API-key authentication. Favoright is a closed-source online service at [favoright.app](https://favoright.app); this repository contains only the agent skill.
 
+**Current version:** `1.0.2`
+
 ## Install
 
 Install or copy the [`favoright/`](./favoright) directory into your agent harness’s skills location, then invoke it as `/favoright` (or `$favoright` where that is the harness convention).
