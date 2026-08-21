@@ -1,6 +1,6 @@
 # Favoright MCP tools
 
-Favoright is a remote Streamable HTTP MCP server at `https://<deployment>/mcp`. OAuth-capable clients discover and authenticate automatically; token clients use `Authorization: Bearer fvr_live_...`.
+Favoright is a closed-source online service with a remote Streamable HTTP MCP server at `https://favoright.app/mcp`. OAuth-capable clients discover and authenticate automatically; token clients use `Authorization: Bearer fvr_live_...`.
 
 ## Scopes
 

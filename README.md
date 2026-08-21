@@ -1,6 +1,6 @@
 # Favoright Skill
 
-Use Favoright’s remote MCP to explore a user’s favorite music, generate deterministic Apple Music playlist candidates, and safely create or edit playlist drafts through OAuth or personal API-key authentication.
+Use Favoright’s remote MCP to explore a user’s favorite music, generate deterministic Apple Music playlist candidates, and safely create or edit playlist drafts through OAuth or personal API-key authentication. Favoright is a closed-source online service at [favoright.app](https://favoright.app); this repository contains only the agent skill.
 
 ## Install
 
@@ -8,12 +8,12 @@ Install or copy the [`favoright/`](./favoright) directory into your agent harnes
 
 ## Connect Favoright
 
-Favoright is a remote Streamable HTTP MCP server. Use the exact `/mcp` endpoint shown in the user’s Favoright Settings.
+Favoright is a remote Streamable HTTP MCP server at `https://favoright.app/mcp`.
 
 OAuth 2.1 with PKCE is the preferred option for Codex and other OAuth-capable clients:
 
 ```bash
-codex mcp add favoright -- https://your-favoright-deployment.example/mcp
+codex mcp add favoright -- https://favoright.app/mcp
 codex mcp login favoright
 ```
 

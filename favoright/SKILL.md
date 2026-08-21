@@ -9,10 +9,10 @@ Use the configured Favoright MCP server as the sole interface to Favoright. Neve
 
 ## Connect the MCP
 
-Use the deployment's exact `/mcp` endpoint from the user or Favoright Settings. Prefer OAuth 2.1 with PKCE for an interactive user or an OAuth-capable harness:
+Use Favoright's public MCP endpoint, `https://favoright.app/mcp`. Favoright is a closed-source online service; this skill only guides its use. Prefer OAuth 2.1 with PKCE for an interactive user or an OAuth-capable harness:
 
 ```bash
-codex mcp add favoright -- https://your-favoright-deployment.example/mcp
+codex mcp add favoright -- https://favoright.app/mcp
 codex mcp login favoright
 ```
 
@@ -40,4 +40,3 @@ Use `search_favorites` or `search_catalog` only for explicit lookup, manual addi
 After saving or updating a draft, give the user the returned approval URL. Tell them to open it themselves in Favoright, review or edit, connect the selected music service if needed, and explicitly create the playlist. MCP never writes directly to Apple Music.
 
 On `version_conflict`, call `get_playlist_draft`, show the user the current state when material, then retry only with the current `version` and their confirmed intended change. Explain `sync_required` or `connection_required` clearly and ask the user to sync or connect the applicable music platform in Favoright themselves.
-
