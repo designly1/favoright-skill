@@ -31,4 +31,4 @@ See [`favoright/SKILL.md`](./favoright/SKILL.md) for the agent workflow and [`fa
 
 ## Updates
 
-The skill includes a daily GitHub version checker. It records the last successful check outside the installed skill directory and only tells the user when a newer published version is available. It never installs an update without approval. For this private repository, the checking harness needs an authenticated `gh` CLI session or a `GH_TOKEN`/`GITHUB_TOKEN` with repository read access.
+The skill includes a daily GitHub version checker. It records the last successful check outside the installed skill directory and only tells the user when a newer published version is available. It never installs an update without approval. It uses GitHub's public API and can fall back to an authenticated `gh` CLI session or `GH_TOKEN`/`GITHUB_TOKEN` when needed.
