@@ -7,6 +7,10 @@ description: Use Favoright's remote Music Control Protocol (MCP) to inspect a us
 
 Use the configured Favoright MCP server as the sole interface to Favoright. Never open, browse, or control the Favoright web app; do not use browser automation, computer use, or GUI tools against it.
 
+## Check for skill updates
+
+Run `python3 scripts/check-update.py` at most once per day before using the skill when network access is available. It compares this skill's `VERSION` with the published version in `designly1/favoright-skill` and records its check state outside the skill directory. When its JSON output has `needs_notification: true`, tell the user that a newer version is available and include the version and commit. Do not download, replace, or install an update without the user's explicit approval.
+
 ## Connect the MCP
 
 Use Favoright's public MCP endpoint, `https://favoright.app/mcp`. Favoright is a closed-source online service; this skill only guides its use. Prefer OAuth 2.1 with PKCE for an interactive user or an OAuth-capable harness:

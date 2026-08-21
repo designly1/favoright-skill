@@ -28,3 +28,7 @@ For headless clients without OAuth support, use a scoped personal access token (
 - Draft-first behavior: agents return an approval URL; the user reviews and creates the playlist in Favoright
 
 See [`favoright/SKILL.md`](./favoright/SKILL.md) for the agent workflow and [`favoright/references/mcp-tools.md`](./favoright/references/mcp-tools.md) for the complete MCP tool reference.
+
+## Updates
+
+The skill includes a daily GitHub version checker. It records the last successful check outside the installed skill directory and only tells the user when a newer published version is available. It never installs an update without approval.
