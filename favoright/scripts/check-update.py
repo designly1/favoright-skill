@@ -7,9 +7,11 @@ import argparse
 import base64
 import json
 import os
+import subprocess
 import tempfile
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
+from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 REPOSITORY = "designly1/favoright-skill"
@@ -38,9 +40,28 @@ def version_key(value: str) -> tuple[int, ...]:
 
 
 def fetch_json(url: str) -> dict:
-    request = Request(url, headers={"Accept": "application/vnd.github+json", "User-Agent": "favoright-skill-update-checker"})
-    with urlopen(request, timeout=15) as response:  # noqa: S310 - fixed GitHub API origin
-        return json.load(response)
+    token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "favoright-skill-update-checker",
+    }
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    request = Request(url, headers=headers)
+    try:
+        with urlopen(request, timeout=15) as response:  # noqa: S310 - fixed GitHub API origin
+            return json.load(response)
+    except (HTTPError, URLError) as network_error:
+        endpoint = url.removeprefix("https://api.github.com/")
+        completed = subprocess.run(
+            ["gh", "api", "--method", "GET", endpoint],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        if completed.returncode:
+            raise network_error
+        return json.loads(completed.stdout)
 
 
 def read_state(path: Path) -> dict:
