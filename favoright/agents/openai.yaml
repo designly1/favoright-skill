@@ -1,0 +1,4 @@
+interface:
+  display_name: "Favoright"
+  short_description: "Use the Favoright music MCP safely"
+  default_prompt: "Use $favoright to work with my Favoright music library or playlist drafts."
